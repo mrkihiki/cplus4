@@ -2,10 +2,22 @@
 //
 
 #include <iostream>
+using namespace std;
+
+int fun(int a,int n,int nn,int otv)
+{
+	if (n > 0) { if (nn > 0) { otv += a; nn--; fun(a, n, nn, otv); } else { n--; fun(a, n, a, otv);} }
+	else { return otv; }
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	setlocale(LC_ALL, "Russian");
+	int a, n, otvet;
+	cout << "Введите число a "; cin >> a;
+	cout << "Введите степень n "; cin >> n;
+	otvet = fun(a,n,a,0);
+	cout << "otvet = " << otvet;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
