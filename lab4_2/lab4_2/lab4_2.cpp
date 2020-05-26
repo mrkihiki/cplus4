@@ -15,7 +15,13 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	int a, n, otvet;
 	cout << "Введите число a "; cin >> a;
-	cout << "Введите степень n "; cin >> n;
+	bool prov = true;
+	while (prov)
+	{
+		cout << "n = "; cin >> n;
+		if (n >= 1) { prov = false; }
+		else { cout << "введите n >= 1" << endl; }
+	}
 	otvet = fun(a,n,a,a,a);
 	cout << "otvet = " << otvet;
 }
