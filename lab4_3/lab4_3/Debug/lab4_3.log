@@ -1,2 +1,3 @@
 ﻿  lab4_3.cpp
+D:\pril\project\cplus4\lab4_3\lab4_3\lab4_3.cpp(15): warning C4715:  fung: значение возвращается не при всех путях выполнения
   lab4_3.vcxproj -> D:\pril\project\cplus4\lab4_3\Debug\lab4_3.exe

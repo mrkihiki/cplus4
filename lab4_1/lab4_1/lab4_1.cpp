@@ -6,7 +6,7 @@ using namespace std;
 
 int fun(int* Arr,int n,int nn,int otv)
 {
-	if (nn <= n) { otv += Arr[nn]; nn = nn + 2; fun(Arr,n,nn,otv); }
+	if (nn <= n) { if (Arr[nn] % 2 == 0) { otv *= Arr[nn]; } nn = nn + 1; fun(Arr, n, nn, otv); }
 	else { return otv; }
 }
 
@@ -26,7 +26,7 @@ int main()
 	}
 	for (int i = 0; i < n; i++) { cout << Arr[i] << " "; }
 	cout << endl;
-	otvet = fun(Arr,n-1,1,0);
+	otvet = fun(Arr,n-1,0,1);
 	cout << "otvet = " << otvet;
 
 }

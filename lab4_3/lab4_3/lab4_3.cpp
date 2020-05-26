@@ -3,20 +3,29 @@
 
 #include <iostream>
 using namespace std;
-int q,p=2;
-void fun(int g,int f,int n)
+int q=0,p=2;
+
+int fung(int f, int g, int n)
+{
+	if (p <= n) {
+		g = f + g;
+		cout << "g(" << p << ") = " << g << endl;
+		return g;
+	}
+}
+
+
+void funf(int f,int g,int n)
 {
 	if (p<=n) {
 		q = f;
 		f = f * g;
-		g = q + g;
 		cout << "f("<<p<<") = "<<f<<endl;
-		cout << "g("<<p<<") = "<<g<<endl;
+		g=fung(q, g, n);
 		p++;
-		fun(g, f, n);
+		funf(g, f, n);
 	}
 }
-
 
 int main()
 {
@@ -30,7 +39,7 @@ int main()
 	}
 	cout << "f(1) = "; cin >> f;
 	cout << "g(1) = "; cin >> g;
-	fun(f, g, n);
+	funf(f, g, n);
    
 }
 
