@@ -5,42 +5,59 @@
 using namespace std;
 int q=0,p=2;
 
-int fung(int f, int g, int n)
-{
-	if (p <= n) {
-		g = f + g;
-		cout << "g(" << p << ") = " << g << endl;
-		return g;
-	}
-}
-
-
-void funf(int f,int g,int n)
-{
-	if (p<=n) {
-		q = f;
-		f = f * g;
-		cout << "f("<<p<<") = "<<f<<endl;
-		g=fung(q, g, n);
-		p++;
-		funf(g, f, n);
-	}
-}
+int fung(int* Arrf, int* Arrg, int nn);
+int funf(int* Arrf, int* Arrg, int nn);
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	int f, g, n; bool prov = true;
+	int* Arrf;
+	int* Arrg;
+	int  n; bool prov = true;
 	while (prov)
 	{
 		cout << "n = "; cin >> n;
 		if (n >= 2) { prov = false; }
 		else { cout << "введите n >= 2"<<endl; }
 	}
-	cout << "f(1) = "; cin >> f;
-	cout << "g(1) = "; cin >> g;
-	funf(f, g, n);
+	Arrf = new int[n]; // динамический массив
+	Arrg = new int[n]; // динамический массив
+	
+	cout << "f(1) = "; cin >> Arrf[0];
+	cout << "g(1) = "; cin >> Arrg[0];
+	cout << endl << "---------------------------" << endl << endl;
+	fung(Arrf, Arrg, n);
+
+	int ii=1;
+	for (int i = 0; i < n; i++)
+	{
+		cout << "f(" << ii << ") = " << Arrf[i] << endl;
+		cout << "g(" << ii << ") = " << Arrg[i] << endl;
+		ii++;
+	}
+	
    
+}
+
+
+int fung(int* Arrf, int* Arrg, int ng)
+{
+
+	if (ng > 0) { Arrg[ng] = funf(Arrf, Arrg, ng - 1) + fung(Arrf, Arrg, ng - 1); return Arrg[ng];}
+	else { return Arrg[0]; }
+
+
+}
+
+
+int funf(int* Arrf, int* Arrg, int nf)
+{
+
+
+	if (nf > 0) { Arrf[nf] = funf(Arrf, Arrg, nf - 1) * fung(Arrf, Arrg, nf - 1); return Arrf[nf];}
+	else { return Arrf[0]; }
+
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
