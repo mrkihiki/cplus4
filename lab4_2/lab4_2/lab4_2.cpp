@@ -4,9 +4,9 @@
 #include <iostream>
 using namespace std;
 
-int fun(int a,int n,int nn,int otv)
+int fun(int a,int n,int nn,int otv,int skok)
 {
-	if (n > 0) { if (nn > 0) { otv += a; nn--; fun(a, n, nn, otv); } else { n--; fun(a, n, a, otv);} }
+	if (n > 1) { if (nn > 1) { otv += skok; nn--;  fun(a, n, nn, otv, skok); } else {   n--; fun(a, n, a, otv, otv); } }
 	else { return otv; }
 }
 
@@ -16,7 +16,7 @@ int main()
 	int a, n, otvet;
 	cout << "Введите число a "; cin >> a;
 	cout << "Введите степень n "; cin >> n;
-	otvet = fun(a,n,a,0);
+	otvet = fun(a,n,a,a,a);
 	cout << "otvet = " << otvet;
 }
 
